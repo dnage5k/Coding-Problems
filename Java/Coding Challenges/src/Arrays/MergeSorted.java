@@ -21,11 +21,17 @@ public class MergeSorted {
 		
 		// Questions 
 		// Will the given array lengths always be the same?
-		// 
+		// Are both arrays sorted already
 		int[] mergeArray = new int[array1.length + array2.length];
 		int array1Length = 0;
 		int array2Length = 0;
 		
+		if(array1.length == 0) {
+			return array1;
+		}
+		if(array2.length == 0) {
+			return array2;
+		}
 		for(int i = 0; i < mergeArray.length; i++) {
 			boolean array1Empty = array1Length <= array1.length-1;
 			boolean array2Empty = array2Length <= array2.length-1;;
