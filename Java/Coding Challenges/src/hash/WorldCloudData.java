@@ -13,7 +13,21 @@ public class WorldCloudData {
 	public static void main(String[] args) {
 		String s =   "After beating the eggs, Dana read the next step:"
 				+" Add milk and eggs, then add flour and sugar.";
+		
+		String text1 = "I like cake";
+		final String text2 = "Chocolate cake for dinner and pound cake for dessert";
+		final String text3 = "Strawberry short cake? Yum!";
+		String text4 = "Dessert - mille-feuille cake";
+		final String text5 = "Mmm...mmm...decisions...decisions";
+		final String text6 = "Allie's Bakery: Sasha's Cakes";
 		System.out.println(cloudStorage(s));
+		System.out.println(cloudStorage(text2));
+		System.out.println(cloudStorage(text3));
+		System.out.println(cloudStorage(text4));
+		System.out.println(cloudStorage(text5));
+		System.out.println(cloudStorage(text6));
+		System.out.println(cloudStorage(text1));
+		
 	}
 	
 	public static Map<String,Integer> cloudStorage(String data){
@@ -25,17 +39,10 @@ public class WorldCloudData {
 		
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		String[] split = data.toLowerCase().split(" ");
-		System.out.println(Arrays.toString(split));
 		String punc = ",./ ';:{[}]+=-_!@#/?";
-		
+		System.out.println(Arrays.toString(split));
 		for(String word: split) {
-			if(punc.contains(word.substring(word.length()-1))) {
-				if(map.containsKey(word.substring(word.length()-1))){
-					map.put(word.substring(word.length()-1), map.get(word.substring(word.length()-1))+1);
-				}else {
-					map.put(word.substring(word.length()-1),1);
-				}
-				
+			if(punc.contains(word.substring(word.length()-1))) {		
 				if(map.containsKey(word.substring(0,word.length()-1))) {
 					map.put(word.substring(0,word.length()-1), map.get(word.substring(0,word.length()-1))+1);
 				}else {
@@ -50,7 +57,5 @@ public class WorldCloudData {
 		return map;
 	}
 	
-	// Helper method
-	// Check if the word is either in the map or not
 
 }

@@ -66,7 +66,6 @@ public class TopScores {
 	        // sort the scores in O(n) time
 	        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
 			int pointer = 0;
-			int[] sortedArray = new int[unorderedScores.length];
 			
 			for(int i = 0; i < unorderedScores.length; i ++) {
 				if(!map.containsKey(unorderedScores[i])) {
@@ -79,7 +78,7 @@ public class TopScores {
 			for(int i = highestPossibleScore; i >= 0; i--) {
 				if(map.containsKey(i)) {
 					for(int j = 0; j < map.get(i); j++) {
-						sortedArray[pointer++] = i;
+						unorderedScores[pointer++] = i;
 					}
 				}
 			}
