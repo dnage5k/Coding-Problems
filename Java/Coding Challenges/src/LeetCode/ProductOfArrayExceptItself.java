@@ -34,7 +34,11 @@ public class ProductOfArrayExceptItself {
 			product = 1;
 			for(int j = 0; j < arr.length; j++) {
 				if(i != j) {
-					product *= arr[j];
+					if(arr[j] == 0) {
+						product = 0;
+					}else {
+						product *= arr[j];
+					}
 				}
 			}
 			nums[i] = product;
@@ -42,5 +46,46 @@ public class ProductOfArrayExceptItself {
 		
 		return nums;
 	}
+	
+	// the better solution
+	// O(N) time complextiy with O(1) space.
+	
+	// Method
+	// Create a left and right variable
+	// Create a for loop to loop through the array starting from left to right
+	// if i is greater than 0 then multiple left with the previous index in the array
+	// insert the multiplication of left into the ans[i] at every iteration
+	// The purpose of this is to get the multiples of the left side at the i-th iteration
+	// We can multiply that with the right side giving us the product beside itself
+	
+	// Do the same with the right side starting on right side
+	// Create a for loop and iterate downward of the array
+	// if i < nums.length-1 then multiple the right with nums[i+1] (number previous of the iteration)
+	// multiple the left side with the right side (ans[i] contains the left side)
+	// This multiplication gives the answer because youre essentially multiplying the left side with the right side beside itself.
+	public static int[] productExceptSelf(int[] nums) {
+        int left = 1;
+        int right = 1;
+        
+        int[] ans = new int[nums.length];
+        for(int i = 0; i < nums.length; i++){
+            if(i > 0){
+                left = left * nums[i-1];
+            }
+            ans[i] = left;
+        }
+        System.out.println(Arrays.toString(ans));
+        // left [1 1 2 6]
+        // right [24 12 4 1]
+        for(int i = nums.length-1; i >= 0; i--){
+            if(i < nums.length-1){
+                right = right * nums[i+1];
+            }
+            ans[i] *= right;
+        }
+        
+        return ans;
+        
+    }
 
 }
