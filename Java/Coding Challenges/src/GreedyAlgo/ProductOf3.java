@@ -27,97 +27,73 @@ public class ProductOf3 {
 		}
 		
 		
-//		int one = intArray[0];
-//		int two = intArray[1];
-//		int three = 0;
-//		int negOne = intArray[0];
-//		int negTwo = intArray[1];
-//		
-//		int product = -10000000;
-//		
-//		
-//		if( intArray.length == 3) {
-//			return intArray[0] * intArray[1] * intArray[2];
-//		}
-//		int lowest = 0;
-//		int highest = -1;
-//		for(int i = 2; i < intArray.length; i++) {
-//			
-//			lowest = Math.max(negOne, negTwo);
-//			highest = Math.min(one, two);
-//			if(lowest > intArray[i]) {
-//				if(negOne == lowest) {
-//					negOne = intArray[i];
-//				}else {
-//					negTwo = intArray[i];
-//				}
-//			}else if(three < intArray[i]) {
-//				three = intArray[i];
-//			}
-//			
-//			if(highest < intArray[i]) {
-//				if(one == highest) {
-//					one = intArray[i];
-//				}else {
-//					two = intArray[i];
-//				}
-//			}else if(three < intArray[i]) {
-//				three = intArray[i];
-//			}
-//			
-//			 
-//		}
-//		if(one*two*three > negOne*negTwo*three) {
-//			return one*two*three;
-//		}else {
-//			return negOne*negTwo*three;
-//		}
-		 int highest = Math.max(intArray[0], intArray[1]);
-		    int lowest  = Math.min(intArray[0], intArray[1]);
-
-		    int highestProductOf2 = intArray[0] * intArray[1];
-		    int lowestProductOf2  = intArray[0] * intArray[1];
-
-		    // except this one--we pre-populate it for the first *3* items.
-		    // this means in our first pass it'll check against itself, which is fine.
-		    int highestProductOf3 = intArray[0] * intArray[1] * intArray[2];
-
-		    // walk through items, starting at index 2
-		    for (int i = 2; i < intArray.length; i++) {
-		        int current = intArray[i];
-
-		        // do we have a new highest product of 3?
-		        // it's either the current highest,
-		        // or the current times the highest product of two
-		        // or the current times the lowest product of two
-		        highestProductOf3 = Math.max(Math.max(
-		            highestProductOf3,
-		            current * highestProductOf2),
-		            current * lowestProductOf2);
-
-		        // do we have a new highest product of two?
-		        highestProductOf2 = Math.max(Math.max(
-		            highestProductOf2,
-		            current * highest),
-		            current * lowest);
-
-		        // do we have a new lowest product of two?
-		        lowestProductOf2 = Math.min(Math.min(
-		            lowestProductOf2,
-		            current * highest),
-		            current * lowest);
-
-		        // do we have a new highest?
-		        highest = Math.max(highest, current);
-
-		        // do we have a new lowest?
-		        lowest = Math.min(lowest, current);
+		int one = intArray[0];
+		int two = intArray[1];
 		
+		int negOne = intArray[0];
+		int negTwo = intArray[1];
 		
+		int product = -10000000;
 		
+
+		if( intArray.length == 3) {
+			return intArray[0] * intArray[1] * intArray[2];
+		}
+		int lowest = Math.max(negOne, negTwo);
+		int highest = Math.min(one, two);
+		for(int i = 2; i < intArray.length; i++) {
+			
+			
+			
+			
+			 
+		}
+		return product;
+		
+//		
+//		 	int highest = Math.max(intArray[0], intArray[1]);
+//		    int lowest  = Math.min(intArray[0], intArray[1]);
+//
+//		    int highestProductOf2 = intArray[0] * intArray[1];
+//		    int lowestProductOf2  = intArray[0] * intArray[1];
+//
+//		    // except this one--we pre-populate it for the first *3* items.
+//		    // this means in our first pass it'll check against itself, which is fine.
+//		    int highestProductOf3 = intArray[0] * intArray[1] * intArray[2];
+//
+//		    // walk through items, starting at index 2
+//		    for (int i = 2; i < intArray.length; i++) {
+//		        int current = intArray[i];
+//
+//		        // do we have a new highest product of 3?
+//		        // it's either the current highest,
+//		        // or the current times the highest product of two
+//		        // or the current times the lowest product of two
+//		        highestProductOf3 = Math.max(Math.max(highestProductOf3, current * highestProductOf2),current * lowestProductOf2);
+//
+//		        // do we have a new highest product of two?
+//		        highestProductOf2 = Math.max(Math.max(
+//		            highestProductOf2,
+//		            current * highest),
+//		            current * lowest);
+//
+//		        // do we have a new lowest product of two?
+//		        lowestProductOf2 = Math.min(Math.min(
+//		            lowestProductOf2,
+//		            current * highest),
+//		            current * lowest);
+//
+//		        // do we have a new highest?
+//		        highest = Math.max(highest, current);
+//
+//		        // do we have a new lowest?
+//		        lowest = Math.min(lowest, current);
+//		
+		
+//		 return product;
 	}
-		    return highestProductOf3;
-	}
+		   
+	
 		   
 
 
