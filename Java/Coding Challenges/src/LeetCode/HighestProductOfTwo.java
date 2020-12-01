@@ -33,8 +33,7 @@ public class HighestProductOfTwo {
 	// Purpose
 	// Return the highest product but each of the highest number must be subtracted by 1
 	
-	// Method
-	// 
+	// Method 
 	public static void main(String[] args) {
 		int[] nums1 = {3,4,5,2};
 		int[] nums2 = {1,5,4,5};

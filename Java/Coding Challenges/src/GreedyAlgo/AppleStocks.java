@@ -47,7 +47,7 @@ public class AppleStocks {
 	}
 
 	public static int getMaxProfit(int[] stockPrices) {
-		int profit = -1000000;
+		int profit = Integer.MIN_VALUE;
 		int lowest = stockPrices[0];
 		if(stockPrices.length <= 1) {
 			throw new IllegalArgumentException("requires at least 2 prices");

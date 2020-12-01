@@ -15,9 +15,13 @@ public class ProductOf3 {
 		int[] ex1 = {3,6,7,2,6};
 		int[] ex2 = {-10, 1, 3, 2, -10};
 		int[] ex3 = {1,2,3,4};
-//		System.out.println(productOf3(ex1));
-//		System.out.println(productOf3(ex2));
+		System.out.println(productOf3(ex1));
+		System.out.println(productOf3(ex2));
 		System.out.println(productOf3(ex3));
+		
+		System.out.println(secondWay(ex1));
+		System.out.println(secondWay(ex2));
+		System.out.println(secondWay(ex3));
 	}
 	
 	public static int productOf3(int[] intArray) {
@@ -25,75 +29,80 @@ public class ProductOf3 {
 		if(intArray.length < 3) {
 			throw new IllegalArgumentException("array length less than 3");
 		}
-		
-		
-		int one = intArray[0];
-		int two = intArray[1];
-		
-		int negOne = intArray[0];
-		int negTwo = intArray[1];
-		
-		int product = -10000000;
-		
-
 		if( intArray.length == 3) {
 			return intArray[0] * intArray[1] * intArray[2];
 		}
-		int lowest = Math.max(negOne, negTwo);
-		int highest = Math.min(one, two);
-		for(int i = 2; i < intArray.length; i++) {
+		
+		int highest1 = Integer.MIN_VALUE;
+		int highest2 = Integer.MIN_VALUE;
+		int highest3 = Integer.MIN_VALUE;
+		
+		int lowest1 = Integer.MAX_VALUE;
+		int lowest2 = Integer.MAX_VALUE;
+
+		
+		
+		
+		for(int i = 0; i < intArray.length; i++) {
+			if(highest3 < intArray[i]) {
+				highest1 = highest2;
+				highest2 = highest3;
+				highest3 = intArray[i];
+			}else if(highest2 < intArray[i]) {
+				highest1 = highest2;
+				highest2 = intArray[i];
+			}else if(highest1 < intArray[i]) {
+				highest1 = intArray[i];
+			}
+			
+			if(lowest2 > intArray[i]) {
+				lowest1 = lowest2;
+				lowest2 = intArray[i];
+			}else if(lowest1 > intArray[i]) {
+				lowest1 = intArray[i];
+			}
 			
 			
 			
 			
-			 
 		}
-		return product;
+		return Math.max(highest1*highest2*highest3,lowest1*lowest2*highest3);
 		
-//		
-//		 	int highest = Math.max(intArray[0], intArray[1]);
-//		    int lowest  = Math.min(intArray[0], intArray[1]);
-//
-//		    int highestProductOf2 = intArray[0] * intArray[1];
-//		    int lowestProductOf2  = intArray[0] * intArray[1];
-//
-//		    // except this one--we pre-populate it for the first *3* items.
-//		    // this means in our first pass it'll check against itself, which is fine.
-//		    int highestProductOf3 = intArray[0] * intArray[1] * intArray[2];
-//
-//		    // walk through items, starting at index 2
-//		    for (int i = 2; i < intArray.length; i++) {
-//		        int current = intArray[i];
-//
-//		        // do we have a new highest product of 3?
-//		        // it's either the current highest,
-//		        // or the current times the highest product of two
-//		        // or the current times the lowest product of two
-//		        highestProductOf3 = Math.max(Math.max(highestProductOf3, current * highestProductOf2),current * lowestProductOf2);
-//
-//		        // do we have a new highest product of two?
-//		        highestProductOf2 = Math.max(Math.max(
-//		            highestProductOf2,
-//		            current * highest),
-//		            current * lowest);
-//
-//		        // do we have a new lowest product of two?
-//		        lowestProductOf2 = Math.min(Math.min(
-//		            lowestProductOf2,
-//		            current * highest),
-//		            current * lowest);
-//
-//		        // do we have a new highest?
-//		        highest = Math.max(highest, current);
-//
-//		        // do we have a new lowest?
-//		        lowest = Math.min(lowest, current);
-//		
 		
-//		 return product;
+		 
+
+		   
 	}
 		   
-	
+	public static int secondWay(int[] nums) {
+		if(nums.length < 3) {
+			throw new IllegalArgumentException("array length less than 3");
+		}else if(nums.length == 3) {
+			return nums[0]*nums[1]*nums[2];
+		}
+		int highest = Math.max(nums[0], nums[1]);
+	    int lowest  = Math.min(nums[0], nums[1]);
+
+	    int highestProductOf2 = nums[0] * nums[1];
+	    int lowestProductOf2  = nums[0] * nums[1];
+
+	    // except this one--we pre-populate it for the first *3* items.
+	    // this means in our first pass it'll check against itself, which is fine.
+	    int highestProductOf3 = nums[0] * nums[1] * nums[2];
+	    
+//	  	example  {-10, 1, 3, 2, -10}
+		for(int i = 2; i < nums.length; i++) {
+			highestProductOf3 = Math.max(highestProductOf3, Math.max(highestProductOf2*nums[i], lowestProductOf2*nums[i]));
+			
+			highestProductOf2 = Math.max(highestProductOf2, Math.max(highest*nums[i], lowest*nums[i]));
+			
+			lowestProductOf2 = Math.min(lowestProductOf2, Math.min(highest*nums[i], lowest*nums[i]));
+			
+			highest = Math.max(highest, nums[i]);
+			lowest = Math.min(lowest, nums[i]);
+		}
+		return highestProductOf3;
+	}
 		   
 
 
