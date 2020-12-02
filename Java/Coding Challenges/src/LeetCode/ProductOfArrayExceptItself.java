@@ -74,7 +74,6 @@ public class ProductOfArrayExceptItself {
             }
             ans[i] = left;
         }
-        System.out.println(Arrays.toString(ans));
         // left [1 1 2 6]
         // right [24 12 4 1]
         for(int i = nums.length-1; i >= 0; i--){
