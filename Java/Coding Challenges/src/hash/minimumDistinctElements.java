@@ -16,38 +16,26 @@ public class minimumDistinctElements {
 	// put the all the values in the array as key value pairs. value being the amount of times it appears
 	// Use another for loop to iterate through the map to see which one is the lowest 
 	// Use another loop to remove them from the map then return the size of the map
-	public static int distinctElement(int[] arr, int m) {
+	public static int distinctElement(int[] arr, int k) {
 		// {2,2,1,3,3,3}
 		// m = 3
-		List<Integer> list = new ArrayList<>();
-		int minNum = 0;
-		int[] removeNums = new int[arr.length];
-		int p = 0;
-		Map<Integer, Integer> map = new HashMap<>();
-		for(int i = 0; i < arr.length; i++) {
-			if(!map.containsKey(arr[i])) {
-				map.put(arr[i], 1);
-				removeNums[p++] = arr[i];
-				
-			}else {
-				map.put(arr[i], map.get(arr[i]) + 1);
-			}
-		}
 
-		for(int i = 0; i < map.size(); i++) {
-			list.add(map.get(removeNums[i]));
+		Map<Integer, Integer> map = new HashMap<>();
+		for(int i : arr) {
+			map.put(i, map.getOrDefault(i, 0)+1);
 		}
+		List<Integer> list = new ArrayList<>(map.values());
 		Collections.sort(list);
-		int i = 0;
-		while(m > 0) {
-			list.set(i, list.get(i) - 1);
-			if(list.get(i) == 0) {
-				list.remove(i);
-				i++;
+		int total = 0;
+		for(Integer i : list) {
+			k -= i;
+			if(k < 0) {
+				break;
+			}else {
+				total++;
 			}
-			m--;
 		}
-		return list.size();
+		return map.size() - total;
 		
 		
 	}
