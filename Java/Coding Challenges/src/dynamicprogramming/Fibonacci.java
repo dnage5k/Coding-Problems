@@ -9,7 +9,7 @@ public class Fibonacci {
 		int fib3 = 4;
 		
 //		System.out.println(fib(fib1));
-		System.out.println(fib(fib2));
+		System.out.println(fibM(fib2));
 //		System.out.println(fib(fib3));
 	}
 	
@@ -30,6 +30,19 @@ public class Fibonacci {
 		}
 		
 		return arr[n];
+	}
+	
+	public static int fibM(int n) {
+		int[] memo = new int[n];
+		if (n == 0) {
+			return 0;
+		}else if(n <= 2) {
+			return 1;
+		}else {
+			memo[n] = fibM(n-1) + fibM(n-2);
+			return memo[n];
+		}
+		
 	}
 
 }
