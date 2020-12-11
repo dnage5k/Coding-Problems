@@ -38,9 +38,7 @@ public class Fibonacci {
 		memo[0] = 0;
 		memo[1] = 1;
 		
-		if (n == 0) {
-			return 0;
-		}else if(n < 2) {
+		if(n < 2) {
 			return n;
 		}else if(memo[n] != 0) {
 			return memo[n];
