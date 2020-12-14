@@ -5,7 +5,7 @@ public class Robber198 {
 	public static void main(String[] args) {
 		int[] nums = {3,2,3,100};
 		int[] memo = new int[nums.length];
-		System.out.println(robMemo(nums,memo, nums.length-1));
+		System.out.println(robMemoIte(nums));
 
 	}
 	public static int rob(int[] nums) {
@@ -29,4 +29,30 @@ public class Robber198 {
 		return m;
 		
 	}
+	
+	public static int robMemoIte(int[] nums) {
+		if(nums.length == 0) {
+			return 0;
+		}
+		int[] memo = new int[nums.length+1];
+		memo[0] = 0;
+		memo[1] = nums[0];
+		
+		for(int i = 1; i < nums.length; i++) {
+			memo[i+1] = Math.max(memo[i-1] + nums[i], memo[i]);
+		}
+		return memo[nums.length];
+		
+//		// memo[0] = 0 is storing the base case if no houses was robbed.
+//		if (nums.length == 0) return 0;
+//	    int[] memo = new int[nums.length + 1];
+//	    memo[0] = 0;
+//	    memo[1] = nums[0];
+//	    for (int i = 1; i < nums.length; i++) {
+//	        int val = nums[i];
+//	        memo[i+1] = Math.max(memo[i], memo[i-1] + val);
+//	    }
+//	    return memo[nums.length];
+	}
 }
+
