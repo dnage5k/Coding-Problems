@@ -5,7 +5,7 @@ public class Robber198 {
 	public static void main(String[] args) {
 		int[] nums = {3,2,3,100};
 		int[] memo = new int[nums.length];
-		System.out.println(robMemoIte(nums));
+		System.out.println(robMemoIth0Space(nums));
 
 	}
 	public static int rob(int[] nums) {
@@ -30,6 +30,14 @@ public class Robber198 {
 		
 	}
 	
+	// Method
+	// Memoization using bottom up method
+	// given a base case that there are zero houses to steal from we set memo[0] to zero
+	// we then iterate through nums from i since we inserted memo[1] = nums[0]
+	// Compare the two values to see which is higher.
+	// The one with with the previous answer added with the current num or the current memo of i
+	// Keep going until you get the max number until then
+	// return the final ith element of memo
 	public static int robMemoIte(int[] nums) {
 		if(nums.length == 0) {
 			return 0;
@@ -43,16 +51,24 @@ public class Robber198 {
 		}
 		return memo[nums.length];
 		
-//		// memo[0] = 0 is storing the base case if no houses was robbed.
-//		if (nums.length == 0) return 0;
-//	    int[] memo = new int[nums.length + 1];
-//	    memo[0] = 0;
-//	    memo[1] = nums[0];
-//	    for (int i = 1; i < nums.length; i++) {
-//	        int val = nums[i];
-//	        memo[i+1] = Math.max(memo[i], memo[i-1] + val);
-//	    }
-//	    return memo[nums.length];
+
+	}
+	
+	public static int robMemoIth0Space(int[] nums) {
+		if(nums.length == 0) {
+			return 0;
+		}else if(nums.length == 1) {
+			return nums[1];
+		}
+		int prev = 0;
+		int curr = nums[0];
+		int max = 0;
+		for(int i = 1; i < nums.length; i++) {
+			max = Math.max(prev + nums[i], curr);
+			prev = curr;
+			curr = max;
+		}
+		return max;
 	}
 }
 
