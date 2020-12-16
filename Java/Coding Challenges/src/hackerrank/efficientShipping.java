@@ -34,12 +34,9 @@ public class efficientShipping {
             }
         };
         List<Entry<Integer, Long>> list = new ArrayList<>(map.entrySet());
-        System.out.println(list);
         Collections.sort(list,valueComparator);
-        System.out.println(list);
 		
         for(Entry<Integer, Long> a : list) {
-        	System.out.println(a.getKey());
         	truckSize -= boxes.get(a.getKey());
         	shipped =  shipped + (int) (a.getValue() * boxes.get(a.getKey()));
         	if(truckSize <= 0) {
