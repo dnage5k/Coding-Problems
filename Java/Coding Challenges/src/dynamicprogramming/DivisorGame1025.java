@@ -1,6 +1,6 @@
 package dynamicprogramming;
 
-public class DivisorGame {
+public class DivisorGame1025 {
 
 	public static void main(String[] args) {
 		boolean alice = false;
