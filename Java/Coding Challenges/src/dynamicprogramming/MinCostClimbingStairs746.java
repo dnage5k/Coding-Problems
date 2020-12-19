@@ -8,6 +8,7 @@ public class MinCostClimbingStairs746 {
 		System.out.println(Math.min(recursive(arr,arr.length-2), recursive(arr,arr.length-1)));
 		System.out.println(Math.min(recursiveMemo(arr,arr.length-2, memo), recursiveMemo(arr,arr.length-1, memo)));
 		System.out.println(iterativeMemo(arr));
+		System.out.println(iterative(arr));
 
 	}
 	
@@ -49,6 +50,26 @@ public class MinCostClimbingStairs746 {
 			memo[i] = a;
 		}
 		return Math.min(memo[cost.length-1], memo[cost.length-2]);
+		
+	}
+	
+	// 10 15 20
+	public static int iterative(int[] cost) {
+		if(cost.length == 2) {
+			return Math.min(cost[0], cost[1]);
+		}
+		int first = cost[0];
+		int second = cost[1];
+		int minCost = 0;
+		for(int i = 2; i < cost.length; i++) {
+			int curr = cost[i] + Math.min(first, second);
+			first = second;
+			second = curr;
+			
+			
+			
+		}
+		return Math.min(first, second);
 		
 	}
 
