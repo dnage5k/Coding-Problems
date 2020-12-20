@@ -10,7 +10,7 @@ package dynamicprogramming;
 
 // Example
 
-public class IsSubSequence {
+public class IsSubSequence392 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
