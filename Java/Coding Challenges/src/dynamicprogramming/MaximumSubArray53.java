@@ -1,6 +1,6 @@
 package dynamicprogramming;
 
-public class MaximumSubArray {
+public class MaximumSubArray53 {
 
 	public static void main(String[] args) {
 		int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
@@ -26,6 +26,14 @@ public class MaximumSubArray {
 				
 			}
 		}
+		return max;
+	}
+	
+	public static int recursion(int[] nums, int max, int i) {
+		if(i < 0) {
+			return 0;
+		}
+		
 		return max;
 	}
 }
