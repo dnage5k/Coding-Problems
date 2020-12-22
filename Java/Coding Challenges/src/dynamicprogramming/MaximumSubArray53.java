@@ -1,11 +1,13 @@
 package dynamicprogramming;
 
 public class MaximumSubArray53 {
-
+static int max;
 	public static void main(String[] args) {
 		int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
 		int[] nums2 = {1,2,3,4};
-		System.out.println(longMethod(nums2));
+		System.out.println(longMethod(nums));
+		System.out.println(recursion(nums, 0) + " " + max);
+		
 
 	}
 	
@@ -29,11 +31,17 @@ public class MaximumSubArray53 {
 		return max;
 	}
 	
-	public static int recursion(int[] nums, int max, int i) {
-		if(i < 0) {
+	// Recursion method
+	// Need a global variable to keep track of the max as it seems there is no way to return the max value through the helper function.
+	public static int recursion(int[] nums, int i) {
+		if(i > nums.length-1) {
 			return 0;
 		}
+		int a = nums[i];
+		int b = nums[i] + recursion(nums, i+ 1);
+		int curr = Math.max(a,b);
+		max = Math.max(max, curr);
+		return curr;
 		
-		return max;
 	}
 }
