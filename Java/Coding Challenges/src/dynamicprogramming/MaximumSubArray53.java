@@ -5,8 +5,11 @@ static int max;
 	public static void main(String[] args) {
 		int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
 		int[] nums2 = {1,2,3,4};
-		System.out.println(longMethod(nums));
-		System.out.println(recursion(nums, 0) + " " + max);
+		int[] memo = new int[nums.length];
+//		System.out.println(longMethod(nums));
+//		System.out.println(recursion(nums, 0) + " " + max);
+//		System.out.println(memo(nums, 0, memo) + " max: " + max);
+		System.out.println(maxSubArray(nums));
 		
 
 	}
@@ -44,4 +47,36 @@ static int max;
 		return curr;
 		
 	}
+	
+	public static int memo(int[] nums, int i, int[] memo) {
+		if(i > nums.length-1) {
+			return 0;
+		}
+		if(memo[i] != 0) {
+			return memo[i];
+		}
+		
+		int curr = Math.max(nums[i], nums[i] + memo(nums, i+1, memo));
+		memo[i] = curr;
+		max = Math.max(curr, max);
+		return curr;
+		
+	}
+	
+	 public static int maxSubArray(int[] nums) {
+	        int prevOut = 0;
+	        int currOut = 0;
+	        // -2,1,-3,4,-1,2,1,-5,4
+	        for(int i = 0; i < nums.length; i++) {
+	            currOut = nums[i];
+	            for(int j = nums.length -1; j > i; j--) {
+	                currOut += nums[j];
+	                if(currOut > prevOut) {
+		                prevOut = currOut;
+		            }
+	            }
+	            
+	        }
+	        return prevOut;
+	    }
 }
