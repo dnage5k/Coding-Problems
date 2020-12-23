@@ -9,8 +9,7 @@ static int max;
 //		System.out.println(longMethod(nums));
 //		System.out.println(recursion(nums, 0) + " " + max);
 //		System.out.println(memo(nums, 0, memo) + " max: " + max);
-		System.out.println(maxSubArray(nums));
-		
+		System.out.println(memoIterative(nums));		
 
 	}
 	
@@ -63,20 +62,21 @@ static int max;
 		
 	}
 	
-	 public static int maxSubArray(int[] nums) {
-	        int prevOut = 0;
-	        int currOut = 0;
-	        // -2,1,-3,4,-1,2,1,-5,4
-	        for(int i = 0; i < nums.length; i++) {
-	            currOut = nums[i];
-	            for(int j = nums.length -1; j > i; j--) {
-	                currOut += nums[j];
-	                if(currOut > prevOut) {
-		                prevOut = currOut;
-		            }
-	            }
-	            
-	        }
-	        return prevOut;
-	    }
+	public static int memoIterative(int[] nums) {
+		if(nums.length == 1) {
+			return nums[0];
+		}
+		int memo[] = new int[nums.length];
+		int max = Integer.MIN_VALUE;
+		memo[0] = nums[0];
+		memo[1] = Math.max(nums[0], nums[0] + nums[1]);
+		
+		for(int i = 2; i < nums.length; i++) {
+			int curr = Math.max(nums[i], memo[i-1] + nums[i]);
+			memo[i] = curr;
+			max = Math.max(curr, max);
+		}
+		
+		return max;
+	}
 }
