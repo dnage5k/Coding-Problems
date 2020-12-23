@@ -9,7 +9,8 @@ static int max;
 //		System.out.println(longMethod(nums));
 //		System.out.println(recursion(nums, 0) + " " + max);
 //		System.out.println(memo(nums, 0, memo) + " max: " + max);
-		System.out.println(memoIterative(nums));		
+		System.out.println(memoIterative(nums));
+		System.out.println(iterative(nums));
 
 	}
 	
@@ -69,12 +70,29 @@ static int max;
 		int memo[] = new int[nums.length];
 		int max = Integer.MIN_VALUE;
 		memo[0] = nums[0];
-		memo[1] = Math.max(nums[0], nums[0] + nums[1]);
+        // Takes the max of the first one and the first plus the second one if the array length is only two.
+		max = Math.max(nums[0], nums[0] + nums[1]);
 		
-		for(int i = 2; i < nums.length; i++) {
+		for(int i = 1; i < nums.length; i++) {
 			int curr = Math.max(nums[i], memo[i-1] + nums[i]);
 			memo[i] = curr;
 			max = Math.max(curr, max);
+		}
+		
+		return max;
+	}
+	
+	public static int iterative(int[] nums) {
+		if(nums.length == 1) {
+			return nums[0];
+		}
+		int prev = nums[0];
+		int max = Math.max(nums[0], nums[1] + nums[1]);
+		
+		for(int i = 1; i < nums.length; i++) {
+			int curr = Math.max(nums[i], nums[i] + prev);
+			max = Math.max(curr, max);
+			prev = curr;
 		}
 		
 		return max;
