@@ -3,8 +3,12 @@ package dynamicprogramming;
 public class CountVowelStrings {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
+	}
+	
+	public static int countVowelStrings(int n) {
+		int sum = 0;
 	}
 
 }
