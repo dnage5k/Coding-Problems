@@ -3,8 +3,8 @@ package dynamicprogramming;
 public class LCS {
 
 	public static void main(String[] args) {
-		String text1 = "ace";
-		String text2 = "abcde";
+		String text1 = "aa";
+		String text2 = "aaaa";
 		int i = 0;
 		int j = 0;
 		int[][] memo = new int[text1.length()][text2.length()];
@@ -47,6 +47,13 @@ public class LCS {
 		return memo[text1.length()][text2.length()];
 	}
 	
+	// Method
+	// Create a 2 dimensional array keeping track of all worked out subproblems
+	// iterate through the first row first (the first loop) and look at each column (2nd loop)
+	// In the second loop, compare with the text of the first character with the second character
+	// if they are the same then take the previous number diagonal of that array and add one to it
+	// else take the max of the top and left side of the matrix and insert it into the current matrix index
+	// Return the last matrix box value of the array.
 	public static int lcsIterative2(String text1, String text2) {
 		int[][] memo = new int[text1.length()+1][text2.length()+1];
 		for(int i = 1; i <= text1.length(); i++) {
