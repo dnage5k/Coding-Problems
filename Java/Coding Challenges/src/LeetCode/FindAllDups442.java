@@ -3,7 +3,8 @@ import java.util.*;
 public class FindAllDups442 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] nums = {4,1,2,3,2};
+		System.out.println(bestMethod(nums));
 
 	}
 	
@@ -25,16 +26,28 @@ public class FindAllDups442 {
 		Map<Integer, Integer> map = new HashMap<>();
 		List<Integer> ans = new ArrayList<>();
 		
-		for(int i : nums) {
-			map.put(i, map.getOrDefault(i,0) +1);
-		}
+		for(int i: nums){
+            if(map.containsKey(i)){
+                ans.add(i);
+            }else{
+                map.put(i, 1);
+            }
+        }
 		
-		for(int i: map.keySet()) {
-			if(map.get(i) > 1) {
-				ans.add(i);
+		
+		
+		return ans;
+	}
+	
+	public static List<Integer> bestMethod(int[] nums){
+		List<Integer> ans = new ArrayList<>();
+		for(int i: nums) {
+			if(nums[Math.abs(i) - 1] < 0) {
+				ans.add(Math.abs(i));
+			}else {
+				nums[Math.abs(i)-1] *= -1;
 			}
 		}
-		
 		return ans;
 	}
 

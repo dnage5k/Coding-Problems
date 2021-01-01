@@ -21,7 +21,7 @@ public class CafeOrderChecker {
 		// but the order has to be the same as takeout and dineIn
 		
 		// Method
-		// I would do a for loop on served Orders so the runtime would be the length of servedOrders O(servedOrders.length)
+		// I woulcat d do a for loop on served Orders so the runtime would be the length of servedOrders O(servedOrders.length)
 		// Check every loop to see if it matches either dineIn or takeOut
 		// if one of them doesnt equal to one or the other then return false else return true
 		int takeOutP = 0;
