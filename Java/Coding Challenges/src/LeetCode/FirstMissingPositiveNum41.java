@@ -47,9 +47,7 @@ public class FirstMissingPositiveNum41 {
 	// This should sort the array accordingly and return the smallest positive number if its missing
 	// return array length +1 if its all there.
 	
-	// Testing with git
-	// Test with git round 2
-	// Test,
+
 	public static int bestMethod(int[] nums) {
 		int i = 0;
 		while(i < nums.length) {
