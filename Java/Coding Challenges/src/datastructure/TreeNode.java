@@ -1,9 +1,9 @@
 package datastructure;
 
 public class TreeNode {
-	TreeNode left;
-	TreeNode right;
-	int val;
+	public TreeNode left;
+	public TreeNode right;
+	public int val;
 	
 	TreeNode (int val, TreeNode left, TreeNode right){
 		this.val =  val;
