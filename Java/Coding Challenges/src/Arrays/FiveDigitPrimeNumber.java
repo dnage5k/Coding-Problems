@@ -3,51 +3,54 @@ import java.util.*;
 public class FiveDigitPrimeNumber {
 
 	public static void main(String[] args) {
-		long id = 9300;
-		int a = 9300*9300;
-		System.out.println(a);
+		int id = 0;
 		System.out.println(generate5Num(id));
+
 
 	}
 	
-	public static String generate5Num(long id) {
-		boolean[] primes = new boolean[(int) (id*5 +1)];
-		for(int i = 0; i < id*5; i++) {
-			primes[i] = true;
+	public static String generate5Num(int i) {
+		int a;
+		if(i <= 2) {
+			 a = i + 15;
+		}else{
+			a = i * 5 + 1;
 		}
-		List<Integer> list = primeGenerator(id, primes);
-		System.out.println(list);
-		
-		StringBuilder stringID = new StringBuilder();
-		for(int i = 0; i < id/2; i++) {
-			stringID.append(list.get(i));
+		boolean[] primes = new boolean[a];
+		for(int s = 0; s < primes.length; s++) {
+			primes[s] = true;
 		}
-		String newString = stringID.toString();
-		String newID = newString.substring((int)id, (int)id+5);
-		return newID;
+	
+		String stringID = primeGenerator(i, primes);
+
+		return stringID.substring(i, i+5);
 		
 	}
 	
-	public static List<Integer> primeGenerator(long id,boolean[] primes){
+	public static String primeGenerator(int id,boolean[] primes){
+		int a;
+		if(id <= 2) {
+			 a = id + 15;
+		}else{
+			a = id * 5 + 1;
+		}
 		List<Integer> list = new ArrayList<>();
-		
+		StringBuilder stringID = new StringBuilder();
 		for(int i = 2; i < primes.length; i++) {
 			if(primes[i]) {
-				System.out.print(i);
-				for(int j = i*i; j < primes.length; j += i) {
-					
-					primes[j] = false;
+				stringID.append(i);
+				if(stringID.toString().length() >=10005) {
+					break;
+				}   
+
+				for(long j = i*i; j < primes.length; j += i) {
+					primes[(int) j] = false;
 				}
 			}
 		}
 		
-		for(int i = 2; i < primes.length; i++) {
-			if(primes[i]) {
-				list.add(i);
-			}
-		}
 		
-		return list;
+		return stringID.toString();
 	}
 
 }
