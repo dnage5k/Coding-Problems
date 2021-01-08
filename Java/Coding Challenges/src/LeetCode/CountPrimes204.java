@@ -7,7 +7,7 @@ public class CountPrimes204 {
 		System.out.println(countPrimes(i));
 
 	}
-	
+	//
 	public static int countPrimes(int n) {
         int count = 0;
         if(n < 1){
