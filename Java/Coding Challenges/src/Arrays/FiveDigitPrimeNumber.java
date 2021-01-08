@@ -21,6 +21,7 @@ public class FiveDigitPrimeNumber {
 	// The final array will be filled with false and true
 	// We append everytime the array is true creating our string
 	// we then find the ith index of the string and get the substring of it.
+	
 	public static String generate5Num(int i) {
 		int a;
 		if(i <= 2) {
