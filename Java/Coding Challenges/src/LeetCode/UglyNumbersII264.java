@@ -7,45 +7,54 @@ public class UglyNumbersII264 {
 	//Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
 	
 	public static void main(String[] args) {
-		int n = 4;
-		System.out.println(uglyNumber(4));
+		int n = 1690;
+		System.out.println(uglyNumber(n));
 
 	}
 	
 	public static int uglyNumber(int n) {
-		int count = 0;
+
 		if(n == 1) {
 			return 1;
 		}
 		
-		int uglyNumber2 = 1;
-		int temp = 0;
-
-		
-		for(int i = 1; i <= 1690; ) {
-			if(i % 5 == 0) {
-				i /= 5;
-			}
-			if(i % 3 == 0) {
-				i /= 3;
-			}
-			if(i % 2 == 0) {
-				i /= 2;
-			}
+		int uglyNumber = 2;
+		int count = 2;
+		int i = 2;
+		while(count <= n) {
 			
-			if(i == 1) {
+			if(isUgly(i)) {
+				uglyNumber = i;
 				count++;
-				i++;
-				temp = i;
 			}
-			if(count == n) {
-				break;
-			}
-				
+			i++;
+			
+			
 				
 		}
 		
-		return temp;
+		return uglyNumber;
+	}
+	
+	public static boolean isUgly(int n) {
+		
+		while(n > 1) {
+			int checker = n;
+			if(n % 5 == 0) {
+				n /= 5;
+			}if(n % 3 == 0) {
+				n /= 3;
+			}if(n % 2 == 0) {
+				n /= 2;
+			}
+			
+			if(checker == n) {
+				return false;
+			}
+			
+		}
+			
+		return true;
 	}
 
 }
