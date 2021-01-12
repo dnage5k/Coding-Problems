@@ -1,5 +1,5 @@
 package LeetCode;
-
+import java.util.*;
 public class UglyNumbersII264 {
 	// Question
 	
@@ -8,7 +8,7 @@ public class UglyNumbersII264 {
 	
 	public static void main(String[] args) {
 		int n = 1690;
-		System.out.println(uglyNumber(n));
+		System.out.println(dpMethod(n));
 
 	}
 	
@@ -55,6 +55,42 @@ public class UglyNumbersII264 {
 		}
 			
 		return true;
+	}
+	
+	public static int dpMethod(int n) {
+		List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        
+        if(n == 1) {
+			return 1;
+		}
+        int L1 = 0;
+        int L2 = 0;
+        int L3 = 0;
+        int min = 0;
+        while(list.size() < n){
+            int one = list.get(L1)*2;
+            int two = list.get(L2)*3;
+            int three = list.get(L3)*5;
+            min = Math.min(one,Math.min(two,three));
+                
+            if(!list.contains(min)){
+                list.add(min);
+            }
+            
+            if(one == min){
+                L1++;
+            }
+            if(two == min){
+                L2++;
+            }
+            if(three == min){
+                L3++;
+            }
+           
+        }
+        
+		return list.get(list.size()-1);
 	}
 
 }
