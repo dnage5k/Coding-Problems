@@ -97,4 +97,22 @@ static int max;
 		
 		return max;
 	}
+	
+	// Method
+	// The Maximum Subarray problem output will be highest possible value based on the sum of the array
+	// We will use kadane's method
+	// This method will iterate through the loop and take maximum of both value of the current index and the current index plus the previous one
+	// This way, we can either continuing the array or choose the current one as the best subarray
+	// We then compare that to the max and always take the new best value.
+	public static int bestMethod(int[] nums) {
+		int prev = nums[0];
+		int max = nums[0];
+		
+		for(int i = 1; i < nums.length; i++) {
+			prev = Math.max(nums[i], prev + nums[i]);
+			Math.max(max, prev);
+		}
+		
+		return max;
+	}
 }
