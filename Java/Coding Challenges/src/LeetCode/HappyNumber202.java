@@ -4,7 +4,7 @@ public class HappyNumber202 {
 
 	public static void main(String[] args) {
 		int n = 1111111;
-		System.out.println(isHappyNumber(n));
+		System.out.println(convenientMethod(n));
 
 	}
 	
@@ -53,6 +53,12 @@ public class HappyNumber202 {
         return true;
 	}
 	
+	
+	// Idea
+	// The idea behind this solution is that we are using a hashset to store values that appears as the new n
+	// if a new n appears but it is also in the set then we know a cycle has appear and we can immediately return false
+	// We are using the modulo and divide method to get each individual number of the parameter n
+	
 	public static boolean convenientMethod(int n) {
 		Set<Integer> set = new HashSet<>();
 		
@@ -63,13 +69,21 @@ public class HappyNumber202 {
 				sum += Math.pow((n % 10),2);
 				n /= 10;
 			}
-			if(n == 1) {
-				return true;
-			}
+			n = sum;
+			
+		}
+		if(n == 1) {
+			return true;
 		}
 		
 		
 		return false;
+	}
+	
+	// Idea
+	
+	public static boolean fastestMethod(int n) {
+		
 	}
 
 }
