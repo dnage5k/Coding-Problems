@@ -81,9 +81,28 @@ public class HappyNumber202 {
 	}
 	
 	// Idea
-	
+	// The Idea behind this method is that we are going to use two variable to compare each other to see if theres a cycle (taking care of the
+	// cycle case). One slow and one fast
+	// Changed the helper method to be more efficient instead of using Math.pow and separating the math part as a whole.
+	// if slow is equal to one and slow cannot equal to fast (represents the cycle) then exit the loop
 	public static boolean fastestMethod(int n) {
+		int slow = n;
+		int fast = helper(n);
 		
+		while(slow != 1 && fast != slow) {
+			slow = helper(slow);
+			fast = helper(helper(fast));
+		}
+		return fast == 1;
+	}
+	public static int helper(int n) {
+		int sum = 0;
+		while(n > 0) {
+			int d = n % 10;
+            n = n / 10;
+            sum += d * d;
+		}
+		return sum;
 	}
 
 }
