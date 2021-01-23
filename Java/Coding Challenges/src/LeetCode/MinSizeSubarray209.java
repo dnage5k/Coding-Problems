@@ -54,5 +54,10 @@ If you have figured out the O(n) solution, try coding another solution of which 
 		return count;
 		
 	}
+	
+	public static int twoPointer(int s, int[] nums) {
+		int p1 = 1;
+		int min = Integer.MAXVALUE;
+	}
 
 }
