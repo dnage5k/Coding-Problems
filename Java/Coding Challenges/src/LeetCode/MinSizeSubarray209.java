@@ -22,7 +22,7 @@ If you have figured out the O(n) solution, try coding another solution of which 
 	public static void main(String[] args) {
 		int s = 7;
 		int nums[] = {2,3,1,2,4,3};
-		System.out.println(longMethod(s,nums));
+		System.out.println(twoPointer(s,nums));
 	}
 	
 	public static int longMethod(int s, int[] nums) {
@@ -56,8 +56,26 @@ If you have figured out the O(n) solution, try coding another solution of which 
 	}
 	
 	public static int twoPointer(int s, int[] nums) {
-		int p1 = 1;
+		int p0 = 0;
+		int p1 = 0;
 		int min = Integer.MAXVALUE;
+		int sum = 0;
+		while(p1 < nums.length) {
+			sum+= nums[p1]
+			p1++;
+			int count = p1-p0;
+			if(sum >= s) {
+				min = Math.min(min, count);
+				count = 0;
+			}
+			
+		}
+		
+		if(min == Integer.MAXVALUE) {
+			return 0;
+		}else {
+			return min;
+		}
 	}
 
 }
