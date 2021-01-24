@@ -20,8 +20,8 @@ Follow up:
 If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n). 
  */
 	public static void main(String[] args) {
-		int s = 7;
-		int nums[] = {2,3,1,2,4,3};
+		int s = 11;
+		int nums[] = {1,2,3,4,5};
 		System.out.println(twoPointer(s,nums));
 	}
 	
@@ -57,17 +57,18 @@ If you have figured out the O(n) solution, try coding another solution of which 
 	
 	public static int twoPointer(int s, int[] nums) {
 		// Input: s = 7, nums = [2,3,1,2,4,3]
-		int p0 = 0;
-		int p1 = 0;
+		int p0 = 1;
+		int p1 = 1;
 		int min = Integer.MAX_VALUE;
-		int sum = 0;
+		int sum = nums[0];
 		while(p1 < nums.length || p0 < nums.length) {
 			if(sum < s && p1 < nums.length) {
-				sum += nums[p1];
 				p1++;
-			}else{
-				min = Math.min(min, p1 - p0);
-				sum -= nums[p0];
+				sum += nums[p1-1];
+				
+			}if(sum >= s && p0 < nums.length){
+				min = Math.min(min, p1 - p0 + 1);
+				sum -= nums[p0-1];  
 				p0++;
 				
 			}
