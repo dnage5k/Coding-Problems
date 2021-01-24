@@ -56,22 +56,25 @@ If you have figured out the O(n) solution, try coding another solution of which 
 	}
 	
 	public static int twoPointer(int s, int[] nums) {
+		// Input: s = 7, nums = [2,3,1,2,4,3]
 		int p0 = 0;
 		int p1 = 0;
-		int min = Integer.MAXVALUE;
+		int min = Integer.MAX_VALUE;
 		int sum = 0;
-		while(p1 < nums.length) {
-			sum+= nums[p1]
-			p1++;
-			int count = p1-p0;
-			if(sum >= s) {
-				min = Math.min(min, count);
-				count = 0;
+		while(p1 < nums.length || p0 < nums.length) {
+			if(sum < s && p1 < nums.length) {
+				sum += nums[p1];
+				p1++;
+			}else{
+				min = Math.min(min, p1 - p0);
+				sum -= nums[p0];
+				p0++;
+				
 			}
 			
 		}
 		
-		if(min == Integer.MAXVALUE) {
+		if(min == Integer.MAX_VALUE) {
 			return 0;
 		}else {
 			return min;
