@@ -23,20 +23,27 @@ If you have figured out the O(n) solution, try coding another solution of which 
 		int s = 11;
 		int nums[] = {1,2,3,4,5};
 		System.out.println(twoPointer(s,nums));
+		System.out.println(twoPointer(s,nums));
 	}
-	
+	/*
+	 * The long method takes O(n^2) time with O(1) space
+	 * first loop iterates each index starting at the 0 index of the array and is the starting part of the of the 2nd loop
+	 * The 2nd loop iterates through the loop to see if the combination of the array is greater than s
+	 * if it is then we compare previous minimum with the new  min found and take the lowest of the two
+	 * Returns the lowest one
+	 */
 	public static int longMethod(int s, int[] nums) {
 		int min = Integer.MAX_VALUE;
 		
 		
 		for(int i = 0; i < nums.length; i++) {
 			int sum = 0;
-			int count = 0;
+			
 			for(int j = i; j < nums.length; j++) {
 				sum += nums[j];
-				count++;
+
 				if(sum >= s) {
-					min = Math.min(min, count);
+					min = Math.min(min, j - i + 1);
 					break;
 				}
 			}
@@ -55,6 +62,19 @@ If you have figured out the O(n) solution, try coding another solution of which 
 		
 	}
 	
+	/*
+	 * Takes O(n) time and O(1) space complexity
+	 * The two pointer method uses to variables that points at the array at two different locations
+	 * The first pointer will point at the beginning while the 2nd pointer will point one ahead
+	 * In this case they are set to the same value
+	 * p0 and p1 are 1 because grabbing the last value would be impossible
+	 * use a while loop until both pointers has reach to the end of nums.length
+	 * if the sum is less than the target and the 2nd pointer is less than the length of the array 
+	 * then we will increment 2nd pointer and add it to the sum
+	 * else check to see if sum is greater than or equal to s, if it is take the min of the original min and p1-p0+1
+	 * 
+	 * return 
+	 */
 	public static int twoPointer(int s, int[] nums) {
 		// Input: s = 7, nums = [2,3,1,2,4,3]
 		// {1,2,3,4,5};
