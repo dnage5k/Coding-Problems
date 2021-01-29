@@ -7,6 +7,21 @@ public class CalculateSumOfNumbersInString {
 		System.out.println(calculateSumOfNumbersInString(s));
 
 	}
+	/* ORIGINAL
+	 * public int calculateSumOfNumbersInString(String inputString) {
+        String temp = "";
+        int sum = 0;
+        for(int i = 0; i < inputString.length(); i++) {
+            char ch = inputString.charAt(i);
+            if(Character.isDigit(ch))
+                temp += ch;
+            else
+                sum += Integer.parseInt(temp);
+            temp = "0";
+        }
+        return sum + Integer.parseInt(temp);
+    }
+	 */
 	public static int calculateSumOfNumbersInString(String inputString) {
         String temp = "";
         int sum = 0;

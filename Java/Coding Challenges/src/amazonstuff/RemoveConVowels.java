@@ -18,7 +18,7 @@ public class RemoveConVowels {
         String str1 = "";
         str1 = str1+str.charAt(0);
         for(int i = 1; i < str.length(); i++)
-            if((!is_vowel(str.charAt(i - 1))) ||
+            if((!is_vowel(str.charAt(i - 1))) &&
                     (!is_vowel(str.charAt(i)))) {
                 char ch = str.charAt(i);
                 str1 = str1 + ch;

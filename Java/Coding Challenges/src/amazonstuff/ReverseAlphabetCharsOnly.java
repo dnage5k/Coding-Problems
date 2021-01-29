@@ -9,7 +9,8 @@ public class ReverseAlphabetCharsOnly {
 	
 	public static String reverseAlphabetCharsOnly(String inputString) {
 		/* ORIGINAL
-		 * char[] inputChar = inputString.toCharArray();
+		 * public String reverseAlphabetCharsOnly(String inputString) {
+        char[] inputChar = inputString.toCharArray();
         int right = inputString.length() - 1;
         int left = 0;
         while(left < right) {
@@ -21,12 +22,12 @@ public class ReverseAlphabetCharsOnly {
                 char temp = inputChar[left];
                 inputChar[left] = inputChar[right];
                 inputChar[right] = temp;
-                left++;
-                right--;
             }
-            
+            left++;
+            right--;
         }
         return new String(inputChar);
+    }
 		 */
         char[] inputChar = inputString.toCharArray();
         int right = inputString.length() - 1;

@@ -15,10 +15,10 @@ public class CheckPairSumExists {
         Set<Integer> set = new HashSet<Integer>();
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < cols; j++) {
-                if(set.contains(arr[i][j])) {
+                if(set.contains(sum - arr[i][j])) {
                     return true;
                 } else {
-                    set.add(sum - arr[i][j]);
+                    set.add(sum);
                 }
             }
         }
