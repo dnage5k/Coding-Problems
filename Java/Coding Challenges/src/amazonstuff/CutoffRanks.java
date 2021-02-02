@@ -21,20 +21,17 @@ public class CutoffRanks {
 				temp = scores[i];
 				scores[i] = scores[i+1];
 				count++;
-				if(scores[i] > cutOffRank) {
-					break;
-				}else {
-					ppl++;
-				}
+				
 			}else {
 				temp = scores[i];
 				scores[i] = count++;
-				if(scores[i] > cutOffRank) {
-					break;
-				}else {
-					ppl++;
-				}
 				
+				
+			}
+			if(scores[i] > cutOffRank) {
+				break;
+			}else {
+				ppl++;
 			}
 			
 			
