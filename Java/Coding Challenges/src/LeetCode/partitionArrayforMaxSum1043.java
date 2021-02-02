@@ -6,5 +6,13 @@ public class partitionArrayforMaxSum1043 {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	public static int memoMethod(int[] arr, int k) {
+		int[] memo = new int[k];
+		
+				
+		
+	}
 
 }
