@@ -3,68 +3,83 @@ import datastructure.ListNode;
 public class AddTwoNumbers {
 
 	public static void main(String[] args) {
-		ListNode head1 = new ListNode();
-		ListNode head2 = new ListNode();
+		ListNode head1 = new ListNode(9);
+		ListNode head2 = new ListNode(9);
 		ListNode l1 = new ListNode();
-		ListNode l2 = new ListNode();
-		int[] nums1 = {9,9,9,9,9,9,9};
-		int[] nums2 = {9,9,9,9};
-//		head.val = nums[0];
 		l1 = head1;
+		l1.next = new ListNode(5);
+		ListNode l2 = new ListNode();
 		l2 = head2;
-		int i = 0;
-		while(i < nums1.length) {
-			l1.val = nums1[i];
-			l1.next = new ListNode();
-			if(i == nums1.length-1) {
-				break;
-			}
-			l1 = l1.next;
-			i++;
-			
+//		l2.next = new ListNode(2);
+		
+		ListNode n = addTwoNumbers(l1,l2);
+		while(n != null) {
+			System.out.print(n.val + " ");
+			n = n.next;
 		}
-		int j = 0;
-		while(j < nums2.length) {
-			l2.val = nums2[j];
-			l2.next = new ListNode();
-			if(j == nums2.length-1) {
-				break;
-			}
-			l2 = l2.next;
-			j++;
-		}
-		while(head1 != null) {
-			System.out.print(head1.val + "->");
-			head1 = head1.next;
-		}System.out.println("");
-		while(head2 != null) {
-			System.out.print(head2.val + "->");
-			head2 = head2.next;
-		}
+//		System.out.println(addTwoNumbers(l1,l2));
+
 
 	}
 	
 	
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+ public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = new ListNode();
-        head.val = l1.val + l2.val;
-        head = head.next;
-        l1 = l1.next;
-        l2 = l2.next;
+        ListNode curr = new ListNode();
+        int carry = 0;
+        curr = head;
         while(l1 != null || l2 != null){
             if(l1 == null){
-                
+            	if(l2.val + carry >= 10){
+                    curr.val = (l2.val + carry) % 10;
+                    carry = 1;
+                }else{
+                    curr.val = l2.val + carry;
+                    carry = 0;
+                }
             }else if(l2 == null){
-                
+            	if(l1.val + carry >= 10){
+                    curr.val = (l1.val + carry) % 10;
+                    carry = 1;
+                }else{
+                    curr.val = l1.val + carry;
+                    carry = 0;
+                }
             }else{
-                head.val = l1.val + l2.val;
+            	
+                if(l1.val+l2.val+carry >= 10){
+                	
+                    curr.val = (l1.val+l2.val+carry) % 10;
+                    carry = 1;
+                }else{
+                    curr.val = l1.val + l2.val + carry;
+                    carry = 0;
+                }
             }
-            head = head.next;
-            l1 = l1.next;
-            l2 = l2.next;
+            
+            if(l1 == null && l2 != null){
+                l2 = l2.next;
+            }else if(l2 == null && l1 != null){
+                l1 = l1.next;
+            }else{
+                l1 = l1.next;
+                l2 = l2.next;
+            }
+
+            
+            if(l1 == null && l2 == null && carry == 1){
+                curr.next = new ListNode(carry);
+                curr = curr.next;
+                break;
+            }else if(l1 != null || l2 != null){
+                curr.next = new ListNode();
+                curr = curr.next;
+            }
+            
+ 
         }
         
-        return head;
-    }
+          return head;  
+        }
 
 }
