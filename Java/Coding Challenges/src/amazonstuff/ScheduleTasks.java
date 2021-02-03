@@ -4,8 +4,8 @@ public class ScheduleTasks {
 
 	public static void main(String[] args) {
 		int num = 5;
-		int[] power = {4,2,8,3,5};
-		int tasks = 19;
+		int[] power = {3, 1, 7, 2, 4};
+		int tasks = 15;
 		System.out.println(scheduleTasks(num,power,tasks));
 	}
 	
@@ -23,6 +23,7 @@ public class ScheduleTasks {
 			if(list.contains(taskNum)) {
 				tasks -= list.get(list.indexOf(taskNum));
 				sec++;
+				break;
 			}
 			if(list.get(i) < list.get(i+1)) {
 				i++;
