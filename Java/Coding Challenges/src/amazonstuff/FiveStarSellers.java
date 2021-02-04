@@ -1,5 +1,6 @@
 package amazonstuff;
 
+// WORkING ON THIS PROBLEM STILL
 import java.util.*;
 
 public class FiveStarSellers {
@@ -15,12 +16,14 @@ public class FiveStarSellers {
 	public static int fiveStarReviews(int[][] productRatings, int ratingsThreshold) {
 		int count = 0;
 		double rating = 0;
-		final Comparator<Integer[]> compare = new Comparator<Integer[]>() {
+		final Comparator<Integer[][]> compare = new Comparator<Integer[][]>() {
 			@Override
-			public int compare(Integer[] o1, Integer[] o2) {
-				return o1[0].compareTo(o2[0]);
+			public int compare(Integer[][] o1, Integer[][] o2) {
+				return o1[0][0]/o1[0][1].compareTo(o2[0][0]/o2[0][1]);
 			}
-		}
+		};
+		
+		Arrays.sort(productRatings, compare);
 		for(int i = 0; i < productRatings.length;i++) {
 			for(int j = 0; j < productRatings[i].length; j++ ) {
 				System.out.print(productRatings[i][j]);
