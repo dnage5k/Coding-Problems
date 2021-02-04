@@ -6,7 +6,11 @@ public class LRUCachMissCount {
 		int maxCacheSize = 5;
 		int num = 6;
 		List<Integer> pages = List.of(1, 6, 3, 7, 1, 9, 3, 6, 4, 8);
+		long startTime = System.nanoTime();
 		System.out.println(lruCacheMiss(num,pages,maxCacheSize));
+		long endTime   = System.nanoTime();
+		long totalTime = (endTime - startTime);
+		System.out.println(totalTime);
 
 	}
 	
