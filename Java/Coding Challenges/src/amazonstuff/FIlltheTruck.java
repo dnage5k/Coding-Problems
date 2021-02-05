@@ -1,14 +1,15 @@
 package amazonstuff;
 import java.util.*;
+import java.util.Map.Entry;
 public class FIlltheTruck {
 
 	public static void main(String[] args) {
 		int num = 3;
-		int[] containers = {2,2,3,1,1};
+		int[] containers = {1,3,2,2,1};
 		int itemSize = 3;
-		int cargoSize = 20;
-		int[] itemsPerContainer = {2,3,5,1,5};
-		System.out.println(maximumCargo(num,containers, itemSize, itemsPerContainer, cargoSize));
+		int cargoSize = 4;
+		int[] itemsPerContainer = {9,8,9,5,8};
+		System.out.println(efficientWay(num,containers, itemSize, itemsPerContainer, cargoSize));
 	}
 	
 	public static int maximumCargo(int num, int[] containers, int itemSize, int[] itemsPerContainer, int cargoSize) {
@@ -32,6 +33,37 @@ public class FIlltheTruck {
 		
 		}
 	
+		return max;
+	}
+	
+	public static int efficientWay(int num, int[] containers, int itemSize, int[] itemsPerContainer, int cargoSize) {
+		int max = 0;
+		Map<Integer, Integer> map = new HashMap<>();
+		Comparator<Entry<Integer, Integer>> valueComparator = new Comparator<Entry<Integer,Integer>>() {
+            
+            @Override
+            public int compare(Entry<Integer, Integer> m1, Entry<Integer, Integer> m2) {
+                return m2.getValue().compareTo(m1.getValue());
+            }
+        };
+        
+        for(int i = 0; i < containers.length; i++) {
+        	map.put(i, itemsPerContainer[i]);
+        }
+        List<Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, valueComparator);
+		System.out.println(list);
+		
+		for(Entry<Integer, Integer> x: list) {
+			
+			
+			cargoSize -= containers[x.getKey()];
+			max += x.getValue() * containers[x.getKey()];
+			if(cargoSize <= 0) {
+				max -= x.getValue()*Math.abs(cargoSize);
+				break;
+			}
+		}
 		return max;
 	}
 	
