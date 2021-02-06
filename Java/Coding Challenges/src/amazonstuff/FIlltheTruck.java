@@ -5,10 +5,10 @@ public class FIlltheTruck {
 
 	public static void main(String[] args) {
 		int num = 3;
-		int[] containers = {1,3,2,2,1};
+		int[] containers = {1};
 		int itemSize = 3;
-		int cargoSize = 4;
-		int[] itemsPerContainer = {9,8,9,5,8};
+		int cargoSize = 1;
+		int[] itemsPerContainer = {9};
 		System.out.println(efficientWay(num,containers, itemSize, itemsPerContainer, cargoSize));
 	}
 	
