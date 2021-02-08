@@ -4,8 +4,12 @@ public class NodeComponent {
 	public ArrayList<NodeComponent> components;
 	public int val;
 	
-	public NodeComponent(NodeComponent node) {
-		components = new ArrayList<NodeComponent>(node);
+	public NodeComponent() {
+		components = new ArrayList<NodeComponent>();
+	}
+	
+	public void node(int val) {
+		this.val = val;
 	}
 	
 }

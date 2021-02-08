@@ -5,11 +5,13 @@ public class FIlltheTruck {
 
 	public static void main(String[] args) {
 		int num = 3;
-		int[] containers = {1};
+		int[] containers = {};
 		int itemSize = 3;
-		int cargoSize = 1;
-		int[] itemsPerContainer = {9};
-		System.out.println(efficientWay(num,containers, itemSize, itemsPerContainer, cargoSize));
+		int cargoSize = 13;
+		int[] itemsPerContainer = {};
+		String s = "javAsCriTp";
+
+//		System.out.println(efficientWay(num,containers, itemSize, itemsPerContainer, cargoSize));
 	}
 	
 	public static int maximumCargo(int num, int[] containers, int itemSize, int[] itemsPerContainer, int cargoSize) {
