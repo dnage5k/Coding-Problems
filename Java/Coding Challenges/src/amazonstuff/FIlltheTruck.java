@@ -5,13 +5,13 @@ public class FIlltheTruck {
 
 	public static void main(String[] args) {
 		int num = 3;
-		int[] containers = {};
+		int[] containers = {3,2,1};
 		int itemSize = 3;
-		int cargoSize = 13;
-		int[] itemsPerContainer = {};
-		String s = "javAsCriTp";
+		int cargoSize = 3;
+		int[] itemsPerContainer = {1,2,3};
+		
 
-//		System.out.println(efficientWay(num,containers, itemSize, itemsPerContainer, cargoSize));
+		System.out.println(efficientWay(num,containers, itemSize, itemsPerContainer, cargoSize));
 	}
 	
 	public static int maximumCargo(int num, int[] containers, int itemSize, int[] itemsPerContainer, int cargoSize) {
@@ -69,6 +69,17 @@ public class FIlltheTruck {
 		return max;
 	}
 	
+//	public static int maxHeap(int num, int[] containers, int itemSize, int[] itemsPerContainer, int cargoSize) {
+//		
+//	}
 	
+	public static void max_heapify(int[] arr, int i, int n) {
+		int largest;
+		int left = 2*i;
+		int right = 2*i + 1;
+		if(left <= n && arr[left] > arr[i]) {
+			largest = left;
+		}
+	}
 
 }
