@@ -5,8 +5,10 @@ public class LargestDeficit {
 
 	public static void main(String[] args) {
 		List<debtRecord> records = new ArrayList<>();
+		List<debtRecord> importers = new ArrayList<>();
 		
-
+		importers.add(null);
+		System.out.println(importers);
 	}
 	
 	// Method
@@ -54,10 +56,13 @@ public class LargestDeficit {
 		return list2;
     }
 	
-	class debtRecord{
-	    String borrower = ""; // importer
-	    String lender = ""; //exporter
-	    int amount = 0;
-	}
+	
+
+}
+ class debtRecord{
+    public  String borrower = ""; // importer
+    public  String lender = ""; //exporter
+    int amount = 0;
+    
 
 }
