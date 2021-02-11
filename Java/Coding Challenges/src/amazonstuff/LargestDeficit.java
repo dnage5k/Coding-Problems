@@ -18,7 +18,7 @@ public class LargestDeficit {
             
             @Override
             public int compare(Entry<String, Integer> m1, Entry<String, Integer> m2) {
-                return m1.getValue().compareTo(m2.getValue());
+                return m2.getValue().compareTo(m1.getValue());
             }
         };
         
@@ -27,15 +27,26 @@ public class LargestDeficit {
 			map.put(x.borrower, map.getOrDefault(x.borrower, 0) -  x.amount);
 			map.put(x.lender, map.getOrDefault(x.lender, 0) + x.amount);
 		}
+		List<Entry<String, Integer>> list = new ArrayList<>();
+		for(Entry<String,Integer> x:map.entrySet()) {
+			if(x.getValue() < 0) {
+				list.add(x);
+			}
+		}
 		
-		List<Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+		if(map.size() == 0) {
+			list2.add("None");
+			return list2;
+		}
+		
+		
 		Collections.sort(list,valueComparator);
 		list2.add(list.get(0).getKey());
 		int temp = list.get(0).getValue();
 		list.remove(0);
 		for(Entry<String,Integer> x : list){
 		    if(x.getValue() == temp) {
-		    	
+		    	list2.add(x.getKey());
 		    }
 		}
 		
