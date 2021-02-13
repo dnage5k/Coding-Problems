@@ -57,6 +57,7 @@ public class LargestDeficit {
 		rec10.lender = "David";
 		rec10.amount = 4;
 		List<debtRecord> records = List.of(rec1,rec2,rec3,rec4,rec5,rec6,rec7,rec8,rec9,rec10);
+//		List<debtRecord> records = new ArrayList<>();
 		System.out.println(minimumDebtMembers(records));
 	}
 	
@@ -65,8 +66,7 @@ public class LargestDeficit {
 
         List<String> list2 = new ArrayList<>();
         Map<String, Integer> map = new HashMap<>();
-        Comparator<Entry<String, Integer>> valueComparator = new Comparator<Entry<String,Integer>>() {
-            
+        Comparator<Entry<String, Integer>> valueComparator = new Comparator<Entry<String,Integer>>() {    
             @Override
             public int compare(Entry<String, Integer> m1, Entry<String, Integer> m2) {
                 return m2.getValue().compareTo(m1.getValue());
@@ -92,12 +92,12 @@ public class LargestDeficit {
 		
 		
 		Collections.sort(list,valueComparator);
-		list2.add(list.get(0).getKey());
-		int temp = list.get(0).getValue();
-		list.remove(0);
-		for(Entry<String,Integer> x : list){
-		    if(x.getValue() == temp) {
-		    	list2.add(x.getKey());
+		list2.add(list.get(list.size()-1).getKey());
+		int temp = list.get(list.size()-1).getValue();
+		list.remove(list.size()-1);
+		for(int i = list.size()-1; i >= 0; i-- ){
+		    if(list.get(i).getValue() == temp) {
+		    	list2.add(list.get(i).getKey());
 		    }
 		}
 		
