@@ -19,7 +19,7 @@ public class MinimumTotalContainerSize {
 	public static int minTotalContainerSize(int days, int[] container) {
 		int min = 0;
 		int containerSize = 0;
-		int daysRemaining = 
+
 		
 		return min;
 	}

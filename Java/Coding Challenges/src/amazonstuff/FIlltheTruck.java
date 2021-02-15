@@ -54,11 +54,8 @@ public class FIlltheTruck {
         }
         List<Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
         Collections.sort(list, valueComparator);
-		System.out.println(list);
 		
 		for(Entry<Integer, Integer> x: list) {
-			
-			
 			cargoSize -= containers[x.getKey()];
 			max += x.getValue() * containers[x.getKey()];
 			if(cargoSize <= 0) {
