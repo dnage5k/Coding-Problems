@@ -1,5 +1,5 @@
 package LeetCode;
-
+import java.util.*;
 public class MaxAreaHandV {
 
 	public static void main(String[] args) {
@@ -19,22 +19,26 @@ public class MaxAreaHandV {
         int highestV = 0;
         int highestH = 0;
         
+        Arrays.sort(horizontalCuts);
+        Arrays.sort(verticalCuts);
+        
         for(int i = 0; i < verticalCuts.length; i++) {
         	
         	highestV = Math.max(highestV, verticalCuts[i]);
         	high = Math.max(high, verticalCuts[i] - prev);
         	prev = verticalCuts[i];
-        	
-        	
         }
+        
         maxV = Math.max(high, w - highestV);
         high = 0;
         prev = 0;
+        
         for(int i = 0; i < horizontalCuts.length; i++) {
         	highestH = Math.max(highestH, horizontalCuts[i]);
         	high = Math.max(high, horizontalCuts[i] - prev);
         	prev = horizontalCuts[i];
         }
+        
         maxH = Math.max(high, h - highestH);
         
         return maxV*maxH;
