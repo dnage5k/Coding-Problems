@@ -11,6 +11,19 @@ public class MaxAreaHandV {
 
 	}
 	
+	/*
+	 * Purpose:
+	 * The purpose of this problem is to find the maximum area given two arrays containing vertical and horizontal cuts.
+	 * 
+	 * Method:
+	 * Create a maxV and a maxH variable to store highest value of the width and highest value of the height when cut
+	 * sort the arrays in so we can iterate through the loop accordingly
+	 * 
+	 * iterate through each cuts to find the maximum height and width
+	 * compare current high and new high every then store prev as the new cut
+	 * 
+	 * do the same for horizontal cuts the return the multiplication of maxH and maxV
+	 */
 	public static int maxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts) {
         int maxV = 0;
         int maxH = 0;
@@ -23,23 +36,20 @@ public class MaxAreaHandV {
         Arrays.sort(verticalCuts);
         
         for(int i = 0; i < verticalCuts.length; i++) {
-        	
-        	highestV = Math.max(highestV, verticalCuts[i]);
         	high = Math.max(high, verticalCuts[i] - prev);
         	prev = verticalCuts[i];
         }
         
-        maxV = Math.max(high, w - highestV);
+        maxV = Math.max(high, w - verticalCuts[verticalCuts.length-1]);
         high = 0;
         prev = 0;
         
         for(int i = 0; i < horizontalCuts.length; i++) {
-        	highestH = Math.max(highestH, horizontalCuts[i]);
         	high = Math.max(high, horizontalCuts[i] - prev);
         	prev = horizontalCuts[i];
         }
         
-        maxH = Math.max(high, h - highestH);
+        maxH = Math.max(high, h - horizontalCuts[horizontalCuts.length-1]);
         
         return maxV*maxH;
     }
