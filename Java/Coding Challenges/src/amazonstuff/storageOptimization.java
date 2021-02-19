@@ -11,6 +11,7 @@ public class storageOptimization {
 
 	}
 	
+	// Similar to Leetcode problem 1465 but adjusted the problem based on cuts disappearing instead
 	public static int sol(int h, int w, int[] hc, int[] vc) {
 		int maxHeight = 0;
 		int maxWidth = 0;

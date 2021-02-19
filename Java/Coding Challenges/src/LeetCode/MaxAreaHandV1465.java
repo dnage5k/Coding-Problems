@@ -1,6 +1,6 @@
 package LeetCode;
 import java.util.*;
-public class MaxAreaHandV {
+public class MaxAreaHandV1465 {
 
 	public static void main(String[] args) {
 		int h = 5;
