@@ -10,9 +10,15 @@ public class secretFruitList {
 		System.out.println(matchSecretLists(fruitList,custList));
 
 	}
-	
+	/*
+	 * 
+	 * Cases:
+	 * - when secret list contains "anything"
+	 * - ignoring stuff not on the list
+	 */
+	 
+	 
 	public static boolean matchSecretLists(List<List<String>> secretFruitList, List<String> customerPurchasedList) {
-		boolean ans = true;
 		int p = 0;
 		for(int i = 0; i < secretFruitList.size(); i++) {
 			
