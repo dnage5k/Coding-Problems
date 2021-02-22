@@ -1,4 +1,12 @@
 /.metadata/
 .DS_Store
-
-
+/Java/.DS_Store
+/Java/.metadata/
+/Java/Coding Challenges/bin/
+/Java/Coding Challenges/.metadata/
+/Java/Coding Challenges/.settings/
+/Java/Coding Challenges/.classpath
+/Java/Coding Challenges/.project
+/Java/Coding Challenges/.DS_Store
+/Java/Coding Challenges/src/.DS_Store
+/Java/Coding Challenges/src/.metadata/
