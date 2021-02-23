@@ -18,10 +18,10 @@ public class RemoveDupSortedList83 {
 		
 		ListNode test = sol2(head);
 		
-		while(test != null) {
-			System.out.println(test.val);
-			test = test.next;
-		}
+//		while(test != null) {
+//			System.out.println(test.val);
+//			test = test.next;
+//		}
 		System.out.println(sol2(head));
 	}
 	
@@ -54,24 +54,30 @@ public class RemoveDupSortedList83 {
 	 
 	 /*
 	  * Using O(1) space
+	  * Method:
+	  * use dummy node to iterate through the given linked list
+	  * if the next node is null then we exit the iteration
+	  * Check to see if current node value is not equal to the next node value
+	  * if its not then we can point the current node to that node
+	  * else we set the next node to the node after
 	  */
 	 public static ListNode sol2(ListNode head) {
 		 if(head == null){
-	            return null;
-	        }
-	        ListNode curr = head;
-	        int temp = head.val;
-	        
-	        while(curr.next != null){
-	            if(temp != curr.val){
-	                head = curr;
-	                temp = curr.val;
-	                
-	            }
-	            curr = curr.next;
-	        }
-	        
-	        return head;
-	    }
+		        return null;
+		    }
+		 
+		ListNode curr = head;
+		
+		while(curr.next != null){
+		    if(curr.val != curr.next.val){
+		        curr = curr.next;
+		    }else {
+		    	curr.next = curr.next.next;
+		    }
+		    
+		}
+		        
+		        return head;
+		}
 
 }
