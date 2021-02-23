@@ -1,4 +1,6 @@
 package linkedlist;
+
+
 import datastructure.ListNode;
 public class RemoveDupSortedList83 {
 
@@ -13,7 +15,14 @@ public class RemoveDupSortedList83 {
 		curr = curr.next;
 		curr.next = new ListNode(2);
 		curr = curr.next;
-
+		
+		ListNode test = sol2(head);
+		
+		while(test != null) {
+			System.out.println(test.val);
+			test = test.next;
+		}
+		System.out.println(sol2(head));
 	}
 	
 	/*
@@ -21,7 +30,7 @@ public class RemoveDupSortedList83 {
 	 * Create a new linked list to return
 	 * Iterate through the input linked list until its null
 	 * if the current value of the new linked list is not equal to the next head value then we link that value
-	 * iterate to the next head
+	 * iterate the 
 	 */
 	 public static ListNode deleteDuplicates(ListNode head) {
 	        if(head == null){
@@ -41,6 +50,28 @@ public class RemoveDupSortedList83 {
 	        }
 	        
 	        return newNode;
+	    }
+	 
+	 /*
+	  * Using O(1) space
+	  */
+	 public static ListNode sol2(ListNode head) {
+		 if(head == null){
+	            return null;
+	        }
+	        ListNode curr = head;
+	        int temp = head.val;
+	        
+	        while(curr.next != null){
+	            if(temp != curr.val){
+	                head = curr;
+	                temp = curr.val;
+	                
+	            }
+	            curr = curr.next;
+	        }
+	        
+	        return head;
 	    }
 
 }
