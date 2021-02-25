@@ -54,5 +54,17 @@ public class MiddleOfLinkedList876 {
 		
 		return newNode.next;
 	}
+	
+	public static ListNode sol2(ListNode head) {
+		ListNode[] arr = new ListNode[100];
+		int count = 0;
+		while(head != null) {
+			arr[count++] = head;
+			head = head.next;
+		}
+		
+		return arr[count/2];
+		
+	}
 
 }
