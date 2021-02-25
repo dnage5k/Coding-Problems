@@ -55,6 +55,14 @@ public class MiddleOfLinkedList876 {
 		return newNode.next;
 	}
 	
+	/*
+	 * Method:
+	 * This method uses an array to store all values of head
+	 * Since we know the maximum size of the linked list, we can set a size of 100 for the array
+	 * iterate through the loop until the linked list is null
+	 * store all linked list nodes into the array
+	 * return the half way point of the array
+	 */
 	public static ListNode sol2(ListNode head) {
 		ListNode[] arr = new ListNode[100];
 		int count = 0;
