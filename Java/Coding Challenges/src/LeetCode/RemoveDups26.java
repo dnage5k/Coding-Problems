@@ -12,16 +12,16 @@ public class RemoveDups26 {
             return 1;
         }
         
-        int length = 0;
+        int length = 1;
         
         int p0 = 0;
         
         
         for(int i = 1; i < nums.length; i++){
-            if(nums[p0] == nums[i]){
+            if(nums[p0] != nums[i]){
+            	nums[p0+1] = nums[i];
                 p0++;
-            }else{
-                
+
             }
         }
         
