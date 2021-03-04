@@ -1,12 +1,25 @@
 package LeetCode;
 
 public class ConsecutiveCharacters1446 {
-
+/*
+ * Purpose:
+ * The purpose of this problem is to find the highest consecutive count of letters and return that number
+ */
 	public static void main(String[] args) {
-		int max = 0;
+		String s = "leetcode";
+		System.out.println(maxPower1(s));
+		System.out.println(maxPower2(s));
 		
 	}
 	
+/*
+ * Method:
+ * The first method i did was a 2 pointer method
+ * one pointer is the base and the 2nd pointer increments
+ * if the first character and second character are the same, increase count, p1, and take the max of the original max and count
+ * else set the count back to zero and set p0 to p1 to start the new pointer 
+ * return max
+ */
 	public static int maxPower1(String s) {
 		int count = 0;
         int max = 0;
@@ -26,6 +39,16 @@ public class ConsecutiveCharacters1446 {
         return max;
 	}
 	
+	/*
+	 * Method:
+	 * set count = 1 and max = 1
+	 * use a for loop to iterate through the string
+	 * if the char at index i is equal i-1 then its the same and we could increment the value
+	 * Take the max of the two
+	 * else set count back to one
+	 * 
+	 *  return max
+	 */
 	public static int maxPower2(String s) {
 		int max = 1;
 		int count = 1;
