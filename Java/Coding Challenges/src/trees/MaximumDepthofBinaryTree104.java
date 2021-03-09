@@ -1,5 +1,6 @@
 package trees;
 import datastructure.TreeNode;
+import java.util.*;
 public class MaximumDepthofBinaryTree104 {
 
 	public static void main(String[] args) {
@@ -18,5 +19,13 @@ public class MaximumDepthofBinaryTree104 {
 		return Math.max(left, right) + 1;
     }
 	
-
+	
+	public static int dfs(TreeNode root) {
+		if(root == null) {
+			return 0;
+		}
+		Stack<TreeNode> stk = new Stack<>();
+		stk.push(root);
+		int max = 0;
+	}
 }
